@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serve"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "date-fns": "^2.29.2"
   },
   "devDependencies": {
-    "esbuild": "^0.15.5"
+    "esbuild": "^0.15.5",
+    "serve": "^14.0.1"
   }
 }
