@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Highly Sophisticated Date Checker</h1>
+
+    <p>Please have a look into your JavaScript console ...</p>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "date-fns": "./libs/date-fns.js",
+            "is-long-weekend": "./js/is-long-weekend.mjs",
+            "is-bridging-day": "./js/is-bridging-day.mjs"
+          }
+        }
+    </script>
+
+    <script type="module">
+        import { format, parseISO } from 'date-fns';
+        import { isLongWeekend } from 'is-long-weekend';
+        import { isBridgingDay } from 'is-bridging-day';
+
+        const date = parseISO('2022-08-15');
+        const weekday = format(date, 'EEE');
+
+        console.log(`It's a ${weekday}.`);
+
+        if (isLongWeekend(date)) {
+            console.log('Long weekend 😎');
+        }
+        else if (isBridgingDay(date)) {
+            console.log('Bridging day 😎')
+        }
+    </script>
+
+</body>
+</html>

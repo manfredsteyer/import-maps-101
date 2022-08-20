@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Highly Sophisticated Date Checker</h1>
+
+    <p>Please have a look into your JavaScript console ...</p>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "date-fns": "https://unpkg.com/date-fns@2.29.2/esm/index.js",
+            "date-fns/": "https://unpkg.com/date-fns@2.29.2/esm/"
+          }
+        }
+    </script>
+
+    <script type="module">
+        import { format, parseISO } from 'date-fns';
+
+        // Alternative:
+        // import format from 'date-fns/format';
+        // import parseISO from 'date-fns/parseISO';
+
+        const date = parseISO('2022-08-15');
+        const weekday = format(date, 'EEE');
+
+        console.log(`It's a ${weekday}.`);
+
+        if (weekday === 'Mon' || weekday === 'Fri') {
+            console.log('Long weekend 😎');
+        }
+        else if (weekday === 'Tue' || weekday === 'Thu') {
+            console.log('Bridging day 😎')
+        }
+    </script>
+
+</body>
+</html>
