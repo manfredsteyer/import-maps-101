@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+
     <a href="/"><small>Home</small></a>
 
     <h1>Highly Sophisticated Date Checker</h1>
@@ -16,13 +17,16 @@
     <script type="importmap">
         {
           "imports": {
-            "date-fns": "./libs/date-fns.js"
+            "date-fns": "https://unpkg.com/date-fns@2.29.2/esm/index.js",
+            "date-fns/": "https://unpkg.com/date-fns@2.29.2/esm/"
           }
         }
     </script>
 
     <script type="module">
-        import { format, parseISO } from 'date-fns';
+        // Alternative
+        import format from 'date-fns/format';
+        import parseISO from 'date-fns/parseISO';
 
         const date = parseISO('2022-08-15');
         const weekday = format(date, 'EEE');

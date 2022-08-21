@@ -17,18 +17,13 @@
     <script type="importmap">
         {
           "imports": {
-            "date-fns": "https://unpkg.com/date-fns@2.29.2/esm/index.js",
-            "date-fns/": "https://unpkg.com/date-fns@2.29.2/esm/"
+            "date-fns": "https://unpkg.com/date-fns@2.29.2/esm/index.js"
           }
         }
     </script>
 
     <script type="module">
         import { format, parseISO } from 'date-fns';
-
-        // Alternative:
-        // import format from 'date-fns/format';
-        // import parseISO from 'date-fns/parseISO';
 
         const date = parseISO('2022-08-15');
         const weekday = format(date, 'EEE');
