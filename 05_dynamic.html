@@ -14,22 +14,36 @@
 
     <script>
         // Meta Data
-        const dateFns1 = './libs/date-fns.js';
-        const dateFns2 = './libs/other-date-fns.js';
+        const myDateFns = {
+            path: './libs/date-fns.js',
+            version: '2.29.2'
+        }
 
-        const importMap =  {
-          "imports": {
-            "date-fns": dateFns1,
-            "is-long-weekend": "./js/is-long-weekend.mjs",
-            "is-bridging-day": "./js/is-bridging-day.mjs"
-          },
-          "scopes": {
-            "/js/is-bridging-day.mjs": {
-                "date-fns": dateFns2 === dateFns1 ? dateFns1 : dateFns2
-            }
-          }
+        const otherDateFns = {
+            path: './libs/other-date-fns.js',
+            version: '2.29.2'
         };
 
+        const importMap =  {
+            "imports": {
+                "date-fns": myDateFns.path,
+                "is-long-weekend": "./js/is-long-weekend.mjs",
+                "is-bridging-day": "./js/is-bridging-day.mjs"
+            },
+            "scopes": {
+                "/js/is-bridging-day.mjs": {
+                    "date-fns": negotiate(myDateFns, otherDateFns)
+                }
+            }
+        };
+
+        function negotiate(my, other) {
+            if (my.version === other.version) {
+                return my.path;
+            }
+            return other.path;
+        }
+        
         const im = document.createElement('script');
         im.type = 'importmap';
         im.textContent = JSON.stringify(importMap);
